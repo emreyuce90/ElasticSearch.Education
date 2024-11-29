@@ -1,4 +1,5 @@
-﻿using ElasticSearch.API.Models;
+﻿using ElasticSearch.API.DTOs;
+using ElasticSearch.API.Models;
 using Nest;
 
 namespace ElasticSearch.API.Repositories {
@@ -19,6 +20,21 @@ namespace ElasticSearch.API.Repositories {
                 hit.Source.Id = hit.Id;
             }
             return list.Documents.ToList();
+        }
+
+        public async Task<Product?> GetByIdAsync(string Id,CancellationToken cancellationToken) {
+            var product = await elasticClient.GetAsync<Product>(Id, x => x.Index(indexName));
+
+            if (!product.IsValid) {
+                return null;
+            }
+            product.Source.Id = product.Id;
+            return product.Source;
+        }
+
+        public async Task<bool> UpdateProduct(ProductUpdateDto updatedProduct,CancellationToken cancellationToken) {
+            var data = await elasticClient.UpdateAsync<Product, ProductUpdateDto>(updatedProduct.Id, x => x.Index(indexName).Doc(updatedProduct),cancellationToken);
+            return data.IsValid;
         }
     }
 }

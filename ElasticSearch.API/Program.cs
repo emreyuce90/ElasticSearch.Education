@@ -1,9 +1,7 @@
-
-using Elasticsearch.Net;
-using ElasticSearch.API.Extensions;
+﻿using ElasticSearch.API.Extensions;
 using ElasticSearch.API.Repositories;
 using ElasticSearch.API.Services;
-using Nest;
+using System.Text.Json.Serialization;
 
 namespace ElasticSearch.API {
     public class Program {
@@ -12,7 +10,11 @@ namespace ElasticSearch.API {
             builder.Services.AddAuthorization();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
+            .AddJsonOptions(options => {
+                // Enum değerlerini string olarak serileştir
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            });
             builder.Services.AddElasticSearchExt(builder.Configuration);
             builder.Services.AddScoped<ProductRepository>();
             builder.Services.AddScoped<ProductService>();

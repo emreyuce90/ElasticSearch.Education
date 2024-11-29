@@ -8,6 +8,9 @@ namespace ElasticSearch.API.Mapping {
         {
             CreateMap<Product, ProductDto>().ReverseMap();
             CreateMap<ProductFeature, ProductFeatureDto>();
+            CreateMap<ProductCreateDto, Product>()
+               .ForMember(dest => dest.Feature, opt => opt.MapFrom(src => src.Feature)) // Feature'ı mapleme
+               .ReverseMap();
         }
     }
 }
