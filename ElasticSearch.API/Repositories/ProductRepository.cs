@@ -36,5 +36,10 @@ namespace ElasticSearch.API.Repositories {
             var data = await elasticClient.UpdateAsync<Product, ProductUpdateDto>(updatedProduct.Id, x => x.Index(indexName).Doc(updatedProduct),cancellationToken);
             return data.IsValid;
         }
+
+        public async Task<DeleteResponse> DeleteProduct(string Id,CancellationToken cancellationToken) {
+            return await elasticClient.DeleteAsync<Product>(Id,x=>x.Index(indexName));
+             
+        }
     }
 }

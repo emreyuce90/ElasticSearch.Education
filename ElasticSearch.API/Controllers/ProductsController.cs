@@ -33,5 +33,11 @@ namespace ElasticSearch.API.Controllers {
             var response = await productService.GetByIdAsync(id,cancellationToken);
             return response.ToGenericResult();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id, CancellationToken cancellationToken) {
+            var response = await productService.DeleteProduct(id, cancellationToken);
+            return response.ToGenericResult();
+        }
     }
 }
