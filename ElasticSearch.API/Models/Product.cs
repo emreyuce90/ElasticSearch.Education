@@ -1,9 +1,6 @@
-﻿using ElasticSearch.API.DTOs;
-using Nest;
-namespace ElasticSearch.API.Models;
+﻿namespace ElasticSearch.API.Models;
 public class Product {
 
-    [PropertyName("_id")]
     public string Id { get; set; } = default!;
     public string Name { get; set; } = default!;
     public decimal Price { get; set; }

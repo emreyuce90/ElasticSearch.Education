@@ -19,6 +19,7 @@ namespace ElasticSearch.API {
             builder.Services.AddScoped<ProductRepository>();
             builder.Services.AddScoped<ProductService>();
             builder.Services.AddAutoMapper(typeof(Program));
+            builder.Services.AddScoped<ECommerceRepository>();
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment()) {

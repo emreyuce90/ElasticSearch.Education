@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Elastic.Clients.Elasticsearch;
 using ElasticSearch.API.DTOs;
 using ElasticSearch.API.Models;
 using ElasticSearch.API.Repositories;
@@ -39,14 +40,17 @@ namespace ElasticSearch.API.Services {
         public async Task<ResponseDto<bool>> DeleteProduct(string Id, CancellationToken cancellationToken) {
             var response = await productRepository.DeleteProduct(Id, cancellationToken);
 
-            if(!response.IsValid && response.Result == Nest.Result.NotFound) {
+            if(!response.IsValidResponse && response.Result == Result.NotFound) {
                 return ResponseDto<bool>.Error("The Id you sent is not exist in our database ", HttpStatusCode.NotFound);
             }
 
 
-            if (!response.IsValid) {
-                logger.LogError(exception:response.OriginalException,message:response.Result.ToString());
-                return ResponseDto<bool>.Error($"{response.Result.ToString()}", HttpStatusCode.InternalServerError);
+            if (!response.IsValidResponse) {
+                Exception exception;
+                response.TryGetOriginalException(out exception);
+
+                logger.LogError(exception:exception,message: response.ElasticsearchServerError.Error.ToString());
+                return ResponseDto<bool>.Error($"{response.ElasticsearchServerError.Error.ToString()}", HttpStatusCode.InternalServerError);
             }
 
             return ResponseDto<bool>.Success(true, HttpStatusCode.NoContent);
