@@ -11,6 +11,8 @@ namespace ElasticSearch.API.Models.ECommerce {
         [JsonPropertyName("order_id")] public int OrderId { get; set; } = default!;
         [JsonPropertyName("order_date")]public DateTime OrderDate { get; set; } = default!;
         [JsonPropertyName("products")] public Product[] Products { get; set; } = default!;
+        [JsonPropertyName("customer_gender")] public string Gender { get; set; } = default!;
+
     }
 
     public class Product {

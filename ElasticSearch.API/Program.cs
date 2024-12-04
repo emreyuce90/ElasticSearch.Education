@@ -1,4 +1,5 @@
 ﻿using ElasticSearch.API.Extensions;
+using ElasticSearch.API.Models;
 using ElasticSearch.API.Repositories;
 using ElasticSearch.API.Services;
 using System.Text.Json.Serialization;
@@ -20,6 +21,8 @@ namespace ElasticSearch.API {
             builder.Services.AddScoped<ProductService>();
             builder.Services.AddAutoMapper(typeof(Program));
             builder.Services.AddScoped<ECommerceRepository>();
+            builder.Services.AddScoped<BlogsRepository>();
+
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment()) {
