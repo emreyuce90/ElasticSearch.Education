@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticSearch.API", "Elasti
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{53307D6F-D20C-4176-80AE-525DE11E53F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticSearch.Education.Mvc", "..\ElasticSearch.Education.Mvc\ElasticSearch.Education.Mvc.csproj", "{5D39ABE3-31F2-4C51-B44B-CC953DA34E65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticSearch.Education.Mvc", "..\ElasticSearch.Education.Mvc\ElasticSearch.Education.Mvc.csproj", "{5D39ABE3-31F2-4C51-B44B-CC953DA34E65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller.Test", "..\Controller.Test\Controller.Test.csproj", "{BAE0DBC6-75C2-4F4D-A77F-633FE8FD630C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{5D39ABE3-31F2-4C51-B44B-CC953DA34E65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D39ABE3-31F2-4C51-B44B-CC953DA34E65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D39ABE3-31F2-4C51-B44B-CC953DA34E65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAE0DBC6-75C2-4F4D-A77F-633FE8FD630C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAE0DBC6-75C2-4F4D-A77F-633FE8FD630C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAE0DBC6-75C2-4F4D-A77F-633FE8FD630C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAE0DBC6-75C2-4F4D-A77F-633FE8FD630C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
